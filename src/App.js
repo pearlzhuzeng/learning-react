@@ -4,6 +4,7 @@ import './App.css';
 import Welcome from './components/Welcome';
 import Comment from './components/Comment';
 import Clock from './components/Clock';
+import Counter from './components/Counter';
 
 const comment = {
   date: new Date(),
@@ -35,6 +36,7 @@ class App extends Component {
           />
         </div>
         <div><Clock /></div>
+        <div><Counter /></div>
       </div>
     );
   }
