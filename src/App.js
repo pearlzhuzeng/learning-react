@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Welcome from './components/Welcome';
 import Comment from './components/Comment';
+import Clock from './components/Clock';
 
 const comment = {
   date: new Date(),
@@ -33,6 +34,7 @@ class App extends Component {
             author={comment.author}
           />
         </div>
+        <div><Clock /></div>
       </div>
     );
   }
