@@ -12,6 +12,7 @@ import PageWarning from './components/PageWarning';
 import NumberList from './components/NumberList';
 import Forms from './components/Forms';
 import BoilingCalculator from './components/BoilingCalculator';
+import FancyBorder from './components/FancyBorder';
 
 const comment = {
   date: new Date(),
@@ -58,6 +59,7 @@ class App extends Component {
         <div><NumberList numbers={numbers}/></div>
         <div><Forms /></div>
         <div><BoilingCalculator /></div>
+        <div><FancyBorder /></div>
       </div>
     );
   }
