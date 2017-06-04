@@ -10,6 +10,7 @@ import LoginControl from './components/LoginControl';
 import Mailbox from './components/Mailbox';
 import PageWarning from './components/PageWarning';
 import NumberList from './components/NumberList';
+import Forms from './components/Forms';
 
 const comment = {
   date: new Date(),
@@ -54,6 +55,7 @@ class App extends Component {
         <div><Mailbox unreadMessages={mailuser.messages} userName={mailuser.name} /></div>
         <div><PageWarning /></div>
         <div><NumberList numbers={numbers}/></div>
+        <div><Forms /></div>
       </div>
     );
   }
