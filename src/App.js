@@ -9,6 +9,7 @@ import ToggleOnOff from './components/ToggleOnOff';
 import LoginControl from './components/LoginControl';
 import Mailbox from './components/Mailbox';
 import PageWarning from './components/PageWarning';
+import NumberList from './components/NumberList';
 
 const comment = {
   date: new Date(),
@@ -23,6 +24,8 @@ const mailuser = {
   name: 'Squirrel',
   messages: ['message 1', 'message 2', 'message 3', 'message 4']
 }
+
+const numbers = [1, 2, 3, 4, 5];
 
 class App extends Component {
   render() {
@@ -50,6 +53,7 @@ class App extends Component {
         <div><LoginControl /></div>
         <div><Mailbox unreadMessages={mailuser.messages} userName={mailuser.name} /></div>
         <div><PageWarning /></div>
+        <div><NumberList numbers={numbers}/></div>
       </div>
     );
   }
