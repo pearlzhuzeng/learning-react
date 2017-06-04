@@ -29,6 +29,7 @@ class LoginControl extends Component {
       <div>
         <Greeting isLoggedIn={isLoggedIn} />
         {button}
+        <h4>The user is <strong>{isLoggedIn ? 'currently' : 'not'}</strong> logged in.</h4>
       </div>
     );
   }
