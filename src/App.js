@@ -11,6 +11,7 @@ import Mailbox from './components/Mailbox';
 import PageWarning from './components/PageWarning';
 import NumberList from './components/NumberList';
 import Forms from './components/Forms';
+import BoilingCalculator from './components/BoilingCalculator';
 
 const comment = {
   date: new Date(),
@@ -56,6 +57,7 @@ class App extends Component {
         <div><PageWarning /></div>
         <div><NumberList numbers={numbers}/></div>
         <div><Forms /></div>
+        <div><BoilingCalculator /></div>
       </div>
     );
   }
