@@ -8,6 +8,7 @@ import Counter from './components/Counter';
 import ToggleOnOff from './components/ToggleOnOff';
 import LoginControl from './components/LoginControl';
 import Mailbox from './components/Mailbox';
+import PageWarning from './components/PageWarning';
 
 const comment = {
   date: new Date(),
@@ -48,6 +49,7 @@ class App extends Component {
         <div><ToggleOnOff /></div>
         <div><LoginControl /></div>
         <div><Mailbox unreadMessages={mailuser.messages} userName={mailuser.name} /></div>
+        <div><PageWarning /></div>
       </div>
     );
   }
