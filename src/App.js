@@ -7,6 +7,7 @@ import Clock from './components/Clock';
 import Counter from './components/Counter';
 import ToggleOnOff from './components/ToggleOnOff';
 import LoginControl from './components/LoginControl';
+import Mailbox from './components/Mailbox';
 
 const comment = {
   date: new Date(),
@@ -15,6 +16,11 @@ const comment = {
     name: 'Pearl Zeng',
     avatarUrl: 'https://i1.wp.com/asknature.org/wp-content/uploads/strategy/a284195e8d52b20f9ac84213545b96f1/squirrel.jpg?resize=646%2C430&ssl=1'
   }
+}
+
+const mailuser = {
+  name: 'Squirrel',
+  messages: ['message 1', 'message 2', 'message 3', 'message 4']
 }
 
 class App extends Component {
@@ -41,6 +47,7 @@ class App extends Component {
         <div><Counter /></div>
         <div><ToggleOnOff /></div>
         <div><LoginControl /></div>
+        <div><Mailbox unreadMessages={mailuser.messages} userName={mailuser.name} /></div>
       </div>
     );
   }
