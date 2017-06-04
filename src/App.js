@@ -13,6 +13,7 @@ import NumberList from './components/NumberList';
 import Forms from './components/Forms';
 import BoilingCalculator from './components/BoilingCalculator';
 import FancyBorder from './components/FancyBorder';
+import SplitPane from './components/SplitPane';
 
 const comment = {
   date: new Date(),
@@ -60,6 +61,7 @@ class App extends Component {
         <div><Forms /></div>
         <div><BoilingCalculator /></div>
         <div><FancyBorder /></div>
+        <div><SplitPane /></div>
       </div>
     );
   }
