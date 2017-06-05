@@ -14,7 +14,7 @@ class ProductRow extends React.Component {
     return (
       <tr>
         <td>{name}</td>
-        <td>{this.product.price}</td>
+        <td>{this.props.product.price}</td>
       </tr>
     );
   }
@@ -24,7 +24,7 @@ class ProductTable extends React.Component {
   render() {
     var rows = [];
     var lastCategory = null;
-    this.props.products.forEach((product) => {
+    products.forEach((product) => {
       if (product.name.indexOf(this.props.filterText) === -1 || (!product.stocked && this.props.inStockOnly)) {
         return;
       }
@@ -94,15 +94,15 @@ class FilterableProductTable extends React.Component {
     };
   }
 
-  handleFilterTextInputChange(filterText) {
+  handleFilterTextInputChange = (filterText) => {
     this.setState(
       {filterText: filterText}
     );
   }
 
-  handleStockInputChange(inStockOnly) {
+  handleStockInputChange = (inStockOnly) => {
     this.setState(
-      inStockOnly: inStockOnly
+      {inStockOnly: inStockOnly}
     );
   }
 
@@ -125,7 +125,7 @@ class FilterableProductTable extends React.Component {
   }
 }
 
-var PRODUCTS = [
+var products = [
   {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
   {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
   {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
