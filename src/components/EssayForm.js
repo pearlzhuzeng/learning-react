@@ -4,18 +4,21 @@ class EssayForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'your name',
+      name: 'Type in your name',
       color: 'What is your favorite color?'
     };
   }
 
-  handleChange = (event) => {
-    const target = event.target;
-    const name = target.name;
-    this.setState({
-      name: target.value,
-      color: target.value
-    });
+  handleNameChange = (name) => {
+    this.setState(
+      {name: name}
+    );
+  }
+
+  handleColorChange = (color) => {
+    this.setState(
+      {color: color}
+    );
   }
 
   handleSubmit = (event) => {
@@ -25,14 +28,42 @@ class EssayForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <EssayFormInput
+        onNameChangeInput={this.handleNameChange}
+        onColorChangeInput={this.handleColorChange}
+        handleSubmit={this.handleSubmit}
+        name={this.state.name}
+        color={this.state.color}
+      />
+    );
+  }
+}
+
+class EssayFormInput extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  handleNameChange = (e) => {
+    this.props.onNameChangeInput(e.target.value);
+  }
+
+  handleColorChange = (e) => {
+    this.props.onColorChangeInput(e.target.value);
+  }
+  render() {
+    return (
+      <form onSubmit={this.props.handleSubmit}>
         <label>
           Your name:
-          <input type="text" value={this.state.name} onChange={this.handleChange} />
+          <input
+            type="text"
+            value={this.props.name} onChange={this.handleNameChange} />
         </label>
         <label>
-          Color:
-          <textarea value={this.state.color} onChange={this.handleChange} />
+          Your favorite color:
+          <textarea
+            value={this.props.color} onChange={this.handleColorChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>
