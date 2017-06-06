@@ -13,29 +13,27 @@ class TodoList extends Component {
     this.setState({input: e.target.value});
   }
 
-  onInputSubmit = (input) => {
-    var todos = [];
-    todos.push(input);
+  updateTodos = (item) => {
+    var todos = this.state.todos;
+    todos.push(item);
     this.setState({todos: todos});
-    input.preventDefault();
   }
 
   render() {
-    var todos=Array.from(this.state.todos);
-    const listItem = todos.map((todos) =>
-      <li>{todos}</li>
-    );
+    var todos = this.state.todos;
+    var todoItem = todos.map((todo) => <li>{todo}</li>)
+
     return (
       <div>
-        <form onSubmit={this.onInputSubmit}>
+        <form>
           <input
             type="text"
             value={this.state.input}
             onChange={this.updateInput}
           />
-          <input type="submit" value="Submit" />
+          <input type="button" value="+" onClick={this.updateTodos} />
         </form>
-        <ul>{listItem}</ul>
+        <ul>{todoItem}</ul>
       </div>
     );
   }
