@@ -1,10 +1,6 @@
 import React from 'react';
 
 class TemperatureInput extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleChange = (e) => {
     //Before: this.setState({temperature: e.target.value});
     this.props.onTemperatureChange(e.target.value);

@@ -50,10 +50,6 @@ class ProductTable extends React.Component {
 }
 
 class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleFilterTextInputChange = (e) => {
     this.props.onFilterTextInput(e.target.value);
   }

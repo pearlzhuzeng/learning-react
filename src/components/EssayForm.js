@@ -40,10 +40,6 @@ class EssayForm extends React.Component {
 }
 
 class EssayFormInput extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleNameChange = (e) => {
     this.props.onNameChangeInput(e.target.value);
   }
