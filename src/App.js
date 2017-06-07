@@ -16,6 +16,7 @@ import FancyBorder from './components/FancyBorder';
 import SplitPane from './components/SplitPane';
 import FilterableProductTable from './components/FilterableProductTable';
 import TodoList from './components/TodoList';
+import TodoListTwo from './components/TodoListTwo';
 
 const comment = {
   date: new Date(),
@@ -66,6 +67,7 @@ class App extends Component {
         <div><SplitPane /></div>
         <div><FilterableProductTable /></div>
         <div><TodoList /></div>
+        <div><TodoListTwo /></div>
       </div>
     );
   }
