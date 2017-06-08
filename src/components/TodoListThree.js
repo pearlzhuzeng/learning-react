@@ -40,10 +40,6 @@ class TodoListThree extends React.Component {
     this.setState({ content: '', todos })
   }
 
-  handleCompletedStatusChange = () => {
-    this.setState(!this.state.completed)
-  }
-
   render () {
     return (
       <div>
@@ -62,9 +58,10 @@ class TodoListThree extends React.Component {
               <input
                 type="checkbox"
                 checked={this.state.completed}
-                onChange={this.handleCompletedStatusChange}
+                onChange={!this.state.completed}
               />
-              {this.state.completed: true} ? <span style={{ color: 'grey' }}>{todo}</span> : {todo}
+              {' '}{todo}
+              {/* {this.state.completed: true} ? <span style={{ color: 'grey' }}>{todo}</span> : {todo} */}
               <button onClick={() => this.handleDelete(i)}>[x]</button>
               <button onClick={() => this.handleUpdate(i, this.state.content)}>
                 update
