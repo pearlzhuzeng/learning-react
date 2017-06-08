@@ -18,11 +18,11 @@ class TodoListThree extends React.Component {
     todos: [],
   }
 
-  handleChange = e => {
+  handleChange = (e: SyntheticInputEvent) => {
     this.setState({ content: e.target.value })
   }
 
-  handleSubmit = e => {
+  handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault()
     // const todos = [...this.state.todos, this.state.content]
     const todos = append(this.state.content, this.state.todos)
