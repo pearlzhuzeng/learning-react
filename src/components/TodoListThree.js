@@ -10,12 +10,12 @@ import { append, remove, update } from 'ramda'
 type Item = {
   content: string,
   completed: boolean,
+  timestamp: Date,
 }
 
 class TodoListThree extends React.Component {
-  state: { todos: Item[] } = {
+  state: { content: string, todos: Item[] } = {
     content: '',
-    completed: false,
     todos: [],
   }
 
@@ -26,7 +26,10 @@ class TodoListThree extends React.Component {
   handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault()
     // const todos = [...this.state.todos, this.state.content]
-    const todos = append(this.state.content, this.state.todos)
+    const todos = append(
+      { content: this.state.content, completed: false, timestamp: new Date() },
+      this.state.todos
+    )
     this.setState({ content: '', todos })
   }
 
@@ -35,7 +38,7 @@ class TodoListThree extends React.Component {
     this.setState({ todos })
   }
 
-  handleUpdate = (i: number, updatedcontent: string) => {
+  handleUpdate = (i: number, updatedcontent: Item) => {
     const todos = update(i, updatedcontent, this.state.todos)
     this.setState({ content: '', todos })
   }
@@ -54,18 +57,24 @@ class TodoListThree extends React.Component {
         </form>
         <ul>
           {this.state.todos.map((todo, i) =>
-            <li key={todo}>
+            <li key={todo.timestamp}>
               <input
                 type="checkbox"
-                checked={this.state.completed}
-                onChange={!this.state.completed}
+                checked={todo.completed}
+                onChange={(e: SyntheticInputEvent) => {
+                  this.handleUpdate(i, { ...todo, completed: !todo.completed })
+                }}
               />
-              {' '}{todo}
+              {' '}
+              <input
+                style={{ color: todo.completed ? 'grey' : 'black' }}
+                value={todo.content}
+                onChange={(e: SyntheticInputEvent) => {
+                  this.handleUpdate(i, { ...todo, content: e.target.value })
+                }}
+              />
               {/* {this.state.completed: true} ? <span style={{ color: 'grey' }}>{todo}</span> : {todo} */}
               <button onClick={() => this.handleDelete(i)}>[x]</button>
-              <button onClick={() => this.handleUpdate(i, this.state.content)}>
-                update
-              </button>
             </li>
           )}
         </ul>
