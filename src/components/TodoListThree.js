@@ -5,7 +5,7 @@
 
 import React from 'react'
 
-import { append, remove } from 'ramda'
+import { append, remove, update } from 'ramda'
 
 type Item = {
   content: string,
@@ -34,6 +34,11 @@ class TodoListThree extends React.Component {
     this.setState({ todos })
   }
 
+  handleUpdate = (i: number, updatedcontent: string) => {
+    const todos = update(i, updatedcontent, this.state.todos)
+    this.setState({ content: '', todos })
+  }
+
   render () {
     return (
       <div>
@@ -49,7 +54,12 @@ class TodoListThree extends React.Component {
         <ul>
           {this.state.todos.map((todo, i) =>
             <li key={todo}>
-              {todo} <button onClick={() => this.handleDelete(i)}>[x]</button>
+              <input type="checkbox" />
+              {todo}
+              <button onClick={() => this.handleDelete(i)}>[x]</button>
+              <button onClick={() => this.handleUpdate(i, this.state.content)}>
+                update
+              </button>
             </li>
           )}
         </ul>
