@@ -13,8 +13,9 @@ type Item = {
 }
 
 class TodoListThree extends React.Component {
-  state: { content: string, todos: Item[] } = {
+  state: { todos: Item[] } = {
     content: '',
+    completed: false,
     todos: [],
   }
 
@@ -39,6 +40,10 @@ class TodoListThree extends React.Component {
     this.setState({ content: '', todos })
   }
 
+  handleCompletedStatusChange = () => {
+    this.setState(!this.state.completed)
+  }
+
   render () {
     return (
       <div>
@@ -54,8 +59,12 @@ class TodoListThree extends React.Component {
         <ul>
           {this.state.todos.map((todo, i) =>
             <li key={todo}>
-              <input type="checkbox" />
-              {todo}
+              <input
+                type="checkbox"
+                checked={this.state.completed}
+                onChange={this.handleCompletedStatusChange}
+              />
+              {this.state.completed: true} ? <span style={{ color: 'grey' }}>{todo}</span> : {todo}
               <button onClick={() => this.handleDelete(i)}>[x]</button>
               <button onClick={() => this.handleUpdate(i, this.state.content)}>
                 update
