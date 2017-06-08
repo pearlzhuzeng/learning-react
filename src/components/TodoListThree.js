@@ -24,8 +24,14 @@ class TodoListThree extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const todos = [...this.state.todos, this.state.content]
+    // const todos = [...this.state.todos, this.state.content]
+    const todos = append(this.state.content, this.state.todos)
     this.setState({ content: '', todos })
+  }
+
+  handleDelete = (i: number) => {
+    const todos = remove(i, 1, this.state.todos)
+    this.setState({ todos })
   }
 
   render () {
