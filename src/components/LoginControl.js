@@ -1,61 +1,76 @@
-import React, {Component} from 'react';
+/**
+ * @flow
+ */
+
+import React, { Component } from 'react'
 
 class LoginControl extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {isLoggedIn: true};
-  }
+  state = { isLoggedIn: true }
 
   handleLoginClick = () => {
-    this.setState ({isLoggedIn: true});
+    this.setState({ isLoggedIn: true })
   }
 
   handleLogoutClick = () => {
-    this.setState ({isLoggedIn: false});
+    this.setState({ isLoggedIn: false })
   }
 
-  render() {
-    const isLoggedIn = this.state.isLoggedIn;
+  handleChange = () => {
+    this.setState(({ isLoggedIn }: { isLoggedIn: boolean }) => ({
+      isLoggedIn: !isLoggedIn,
+    }))
+  }
 
-    let button = null;
+  render () {
+    const isLoggedIn = this.state.isLoggedIn
 
-    if(isLoggedIn) {
-      button = <LogoutButton onClick={this.handleLogoutClick} />;
-    } else {
-      button = <LoginButton onClick={this.handleLoginClick} />;
-    }
+    // let button = null
+    //
+    // if (isLoggedIn) {
+    //   button = <LogoutButton onClick={this.handleLogoutClick} />
+    // } else {
+    //   button = <LoginButton onClick={this.handleLoginClick} />
+    // }
 
     return (
       <div>
         <Greeting isLoggedIn={isLoggedIn} />
-        {button}
-        <h4>The user is <strong>{isLoggedIn ? 'currently' : 'not'}</strong> logged in.</h4>
+        <button onClick={this.handleChange}>
+          {isLoggedIn ? 'Logout' : 'Login'}
+        </button>
+        {/* {isLoggedIn
+          ? <LogoutButton onClick={this.handleLogoutClick} />
+          : <LoginButton onClick={this.handleLoginClick} />} */}
+        <h4>
+          The user is <strong>{isLoggedIn ? 'currently' : 'not'}</strong> logged
+          in.
+        </h4>
       </div>
-    );
+    )
   }
 }
 
-function Greeting(props) {
-  if(props.isLoggedIn) {
-    return <UserGreeting />;
+function Greeting (props) {
+  if (props.isLoggedIn) {
+    return <UserGreeting />
   }
-  return <GuestGreeting />;
+  return <GuestGreeting />
 }
 
-function UserGreeting(props) {
-  return <h2>Welcome back!</h2>;
+function UserGreeting (props) {
+  return <h2>Welcome back!</h2>
 }
 
-function GuestGreeting(props) {
-  return <h2>Please sign in.</h2>;
+function GuestGreeting (props) {
+  return <h2>Please sign in.</h2>
 }
 
-function LogoutButton(props) {
-  return <button onClick={props.onClick}>Logout</button>;
+function LogoutButton (props) {
+  return <button onClick={props.onClick}>Logout</button>
 }
 
-function LoginButton(props) {
-  return <button onClick={props.onClick}>Login</button>;
+function LoginButton (props) {
+  return <button onClick={props.onClick}>Login</button>
 }
 
-export default LoginControl;
+export default LoginControl
