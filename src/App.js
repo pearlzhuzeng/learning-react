@@ -56,26 +56,26 @@ class App extends Component {
             author={comment.author}
           />
         </div>
-        <div><Clock /></div>
-        <div><Counter /></div>
-        <div><ToggleOnOff /></div>
-        <div><LoginControl /></div>
+        <Clock />
+        <Counter />
+        <ToggleOnOff />
+        <LoginControl />
         <div>
           <Mailbox
             unreadMessages={mailuser.messages}
             userName={mailuser.name}
           />
         </div>
-        <div><PageWarning /></div>
-        <div><NumberList numbers={numbers} /></div>
-        <div><Forms /></div>
-        <div><BoilingCalculator /></div>
-        <div><FancyBorder /></div>
-        <div><SplitPane /></div>
-        <div><FilterableProductTable /></div>
-        <div><TodoList /></div>
-        <div><TodoListTwo /></div>
-        <div><TodoListThree /></div>
+        <PageWarning />
+        <NumberList numbers={numbers} />
+        <Forms />
+        <BoilingCalculator />
+        <FancyBorder />
+        <SplitPane />
+        <FilterableProductTable />
+        <TodoList />
+        <TodoListTwo />
+        <TodoListThree />
       </div>
     )
   }
