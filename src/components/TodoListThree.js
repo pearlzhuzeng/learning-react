@@ -56,26 +56,15 @@ class TodoListThree extends React.Component {
           <button type="submit">+</button>
         </form>
         <ul>
-          {this.state.todos.map((todo, i) =>
-            <li key={todo.timestamp}>
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={(e: SyntheticInputEvent) => {
-                  this.handleUpdate(i, { ...todo, completed: !todo.completed })
-                }}
-              />
-              {' '}
-              <input
-                style={{ color: todo.completed ? 'grey' : 'black' }}
-                value={todo.content}
-                onChange={(e: SyntheticInputEvent) => {
-                  this.handleUpdate(i, { ...todo, content: e.target.value })
-                }}
-              />
-              {/* {this.state.completed: true} ? <span style={{ color: 'grey' }}>{todo}</span> : {todo} */}
-              <button onClick={() => this.handleDelete(i)}>[x]</button>
-            </li>
+          {this.state.todos.map(
+            (todo, i) =>
+              <TodoItem
+                key={todo.timestamp}
+                i={i}
+                todo={todo}
+                onUpdate={this.handleUpdate}
+                onDelete={this.handleDelete}
+              /> // key is react internal, needs to live here.
           )}
         </ul>
       </div>
@@ -84,3 +73,41 @@ class TodoListThree extends React.Component {
 }
 
 export default TodoListThree
+
+class TodoItem extends React.Component {
+  handleChangeCompleted = () => {
+    const { i, todo, onUpdate } = this.props
+    onUpdate(i, { ...todo, completed: !todo.completed })
+  }
+
+  handleChangeContent = (e: SyntheticInputEvent) => {
+    const { i, todo, onUpdate } = this.props
+    onUpdate(i, { ...todo, content: e.target.value })
+  }
+
+  handleDelete = () => {
+    const { i, onDelete } = this.props
+    onDelete(i)
+  }
+
+  render () {
+    const { todo } = this.props // object destructuring
+    return (
+      <li>
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={this.handleChangeCompleted}
+        />
+        {' '}
+        <input
+          style={{ color: todo.completed ? 'grey' : 'black' }}
+          value={todo.content}
+          onChange={this.handleChangeContent}
+        />
+        {/* {this.state.completed: true} ? <span style={{ color: 'grey' }}>{todo}</span> : {todo} */}
+        <button onClick={this.handleDelete}>[x]</button>
+      </li>
+    )
+  }
+}
