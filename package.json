@@ -10,7 +10,8 @@
     "ramda": "^0.24.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "standard": "^10.0.2"
+    "standard": "^10.0.2",
+    "styled-components": "^2.0.1"
   },
   "devDependencies": {
     "flow-bin": "^0.47.0",
