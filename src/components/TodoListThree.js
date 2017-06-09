@@ -4,6 +4,7 @@
  */
 
 import React from 'react'
+import styled from 'styled-components'
 
 import { append, remove, update } from 'ramda'
 
@@ -45,12 +46,11 @@ class TodoListThree extends React.Component {
 
   render () {
     return (
-      <div>
+      <Container>
         <form onSubmit={this.handleSubmit}>
-          <h3>My Todo List</h3>
-          <input
+          <Heading>My Todo List</Heading>
+          <NewTodoInput
             value={this.state.content}
-            type="text"
             onChange={this.handleChange}
           />
           <button type="submit">+</button>
@@ -67,12 +67,26 @@ class TodoListThree extends React.Component {
               /> // key is react internal, needs to live here.
           )}
         </ul>
-      </div>
+      </Container>
     )
   }
 }
 
 export default TodoListThree
+
+const Heading = styled.h3`
+  color: rebeccapurple;
+`
+
+const Container = styled.div`
+  background: papayawhip;
+`
+
+const NewTodoInput = styled.input.attrs({
+  type: 'text',
+})`
+  color: rebeccapurple;
+`
 
 class TodoItem extends React.Component {
   handleChangeCompleted = () => {
